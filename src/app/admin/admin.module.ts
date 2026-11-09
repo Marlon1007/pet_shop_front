@@ -5,13 +5,15 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CategoryComponent } from './inventory/category/category.component';
 import { ClientComponent } from './components/client/client.component';
+import { LayoutComponent } from './layout/layout.component';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
     CategoryComponent,
-    ClientComponent
+    ClientComponent,
+    LayoutComponent
   ],
   imports: [
     CommonModule,
