@@ -6,6 +6,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CategoryComponent } from './inventory/category/category.component';
 import { ClientComponent } from './components/client/client.component';
 import { LayoutComponent } from './layout/layout.component';
+import { AppLayoutModule } from './layout/app.layout.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { LayoutComponent } from './layout/layout.component';
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    AppLayoutModule
   ]
 })
 export class AdminModule { }

@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService, LoginCredentials } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { LayoutService } from '../../../admin/layout/service/app.layout.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,9 @@ import { AuthService, LoginCredentials } from '../../services/auth.service';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  public layoutService = inject(LayoutService);
   private readonly authService = inject(AuthService);
+  private router = inject(Router);
 
   readonly loginForm = new FormGroup({
     email: new FormControl('', {
@@ -29,7 +33,7 @@ export class LoginComponent {
     const credentials: LoginCredentials = this.loginForm.getRawValue();
     this.authService.login(credentials).subscribe({
       next: (res) => {
-        console.log(res);
+        this.router.navigate(['/admin']);
       },
       error: (error) => {
         console.error(error);

@@ -8,6 +8,12 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './services/auth.service';
 
+import { ButtonModule } from 'primeng/button';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
+import { RippleModule } from 'primeng/ripple';
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -17,7 +23,12 @@ import { AuthService } from './services/auth.service';
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ButtonModule,
+    CheckboxModule,
+    InputTextModule,
+    PasswordModule,
+    RippleModule
   ],
   providers: [
     AuthService
