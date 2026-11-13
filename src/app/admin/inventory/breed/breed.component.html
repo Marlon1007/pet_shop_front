@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+        <h1 class="m-0">Breeds</h1>
+        <button pButton type="button" label="New breed" icon="pi pi-plus" (click)="showDialog()"></button>
+    </div>
+    <p *ngIf="errorMessage && !visible" role="alert" class="text-red-500">{{ errorMessage }}</p>
+    <p-table [value]="breeds">
+        <ng-template pTemplate="header">
+            <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-breed>
+            <tr><td>{{ breed.id }}</td><td>{{ breed.name }}</td><td>
+                <button pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" aria-label="Edit breed" (click)="editBreed(breed)"></button>
+                <button pButton type="button" icon="pi pi-trash" class="p-button-rounded p-button-warning" aria-label="Delete breed" (click)="deleteBreed(breed)"></button>
+            </td></tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr><td colspan="3">No breeds found.</td></tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-dialog [header]="breedId > 0 ? 'Edit breed' : 'New breed'" [(visible)]="visible" [modal]="true" [style]="{ width: '30rem', maxWidth: '95vw' }">
+    <form [formGroup]="breedForm" (ngSubmit)="saveBreed()" class="p-fluid">
+        <div class="field">
+            <label for="breed-name">Name</label>
+            <input id="breed-name" pInputText formControlName="name" autocomplete="off">
+            <small *ngIf="breedForm.controls.name.invalid && breedForm.controls.name.touched" class="text-red-500">Name is required.</small>
+        </div>
+        <p *ngIf="errorMessage" role="alert" class="text-red-500">{{ errorMessage }}</p>
+        <button pButton type="submit" label="Save" icon="pi pi-check" [disabled]="saving"></button>
+    </form>
+</p-dialog>

@@ -33,7 +33,10 @@ export class LoginComponent {
     const credentials: LoginCredentials = this.loginForm.getRawValue();
     this.authService.login(credentials).subscribe({
       next: (res) => {
-        this.router.navigate(['/admin']);
+        if (res.access_token) {
+          this.authService.setToken(res.access_token);
+          this.router.navigate(['/admin']);
+        }
       },
       error: (error) => {
         console.error(error);

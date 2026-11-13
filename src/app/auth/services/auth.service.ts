@@ -9,7 +9,7 @@ export interface LoginCredentials {
 }
 
 export interface AuthResponse {
-  token?: string;
+  access_token?: string;
   [key: string]: unknown;
 }
 
@@ -19,6 +19,14 @@ export interface AuthResponse {
 export class AuthService {
   private readonly baseUrl = environment.apiUrl;
   private readonly http = inject(HttpClient);
+
+  setToken(token: string): void {
+    sessionStorage.setItem('access_token', token);
+  }
+
+  getToken(): string | null {
+    return sessionStorage.getItem('access_token');
+  }
 
   login(credentials: LoginCredentials): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.baseUrl}/auth/login`, credentials);

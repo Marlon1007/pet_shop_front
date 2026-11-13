@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { CategoryComponent } from './inventory/category/category.component';
+import { PetComponent } from './inventory/pet/pet.component';
+import { BreedComponent } from './inventory/breed/breed.component';
 import { AppLayoutComponent } from './layout/app.layout.component';
 
 const routes: Routes = [
@@ -15,8 +16,12 @@ const routes: Routes = [
         component: ProfileComponent
       },
       {
-        path: 'category',
-        component: CategoryComponent
+        path: 'pets',
+        component: PetComponent
+      },
+      {
+        path: 'breeds',
+        component: BreedComponent
       }
     ]
   }
